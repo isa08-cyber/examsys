@@ -6,6 +6,10 @@
     <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
+    <div id="loading">
+        <div class="spinner"></div>
+        <p style="margin-left: 15px;">問題を読み込み中...</p>
+    </div>
     <h1>小テストシステム</h1>
     <h2 th:text="${examName}">試験名</h2>
     <div id="contents">
@@ -51,6 +55,13 @@
             document.answerform.submit();
         }
     }
+    window.addEventListener('load', function() {
+        const loader = document.getElementById('loading');
+        loader.style.opacity = '0';
+        setTimeout(() => {
+        loader.style.display = 'none';
+        }, 500);
+    });
     </script>
 </body>
 </html>
