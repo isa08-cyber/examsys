@@ -38,10 +38,11 @@ jobs:
     needs: build
       
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
         with:
           name: java-app
+          path: target/*.jar
       
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -49,5 +50,5 @@ jobs:
         with:
           app-name: 'orangeexam2'
           slot-name: 'Production'
-          package: '*.jar'
+          package: '.'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_15ED4C57CD974E6E8399AC8676B81EF6 }}
