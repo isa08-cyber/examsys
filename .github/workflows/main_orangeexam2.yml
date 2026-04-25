@@ -50,5 +50,5 @@ jobs:
         with:
           app-name: 'orangeexam2'
           slot-name: 'Production'
-          package: '.'
+          package: '*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_15ED4C57CD974E6E8399AC8676B81EF6 }}
