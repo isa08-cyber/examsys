@@ -1,0 +1,123 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color: #333;
+}
+p {
+	margin: 20px 20px;
+}
+h1 {
+	margin: 0 0 40px 0;
+	padding: 20px;
+	background-color: #34495E;
+	color: #FFF;
+}
+h2 {
+	margin: 10px 20px;
+}
+.width-large{
+	width:300px;	
+}
+.width-middle{
+	width:150px;	
+}
+.width-small{
+	width:80px;	
+}
+
+.controlbox {
+	margin: 20px 20px;
+	height:100%;
+}
+
+.controlbox .button, .button-red{
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.button, .button-red {
+	background-color: #95A5A6;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 1.4;
+	padding: 10px 40px;
+	text-align: center;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	-moz-border-radius: 4px;
+	-moz-user-select: none;
+	-ms-touch-action: manipulation;
+	-ms-user-select: none;
+	-webkit-border-radius: 4px;
+	-webkit-user-select: none;
+}
+.button:hover {
+	background-color: #647071;
+}
+.button-red{
+	background-color: #e74c3c;
+}
+.button-red:hover{
+	background-color: #c0392b;
+}
+#footer{
+	margin: 40px 0 0 0;
+	padding: 20px;
+	color: #FFF;
+	border-top: 1px solid #333333;
+}
+#reserve_control{
+	margin: 30px 20px;
+	padding:0;
+}
+#reserve_control p{
+	margin: 20px 0 0 0;
+	color:#e74c3c;
+	font-weight:bold;
+}
+#errormsg{
+	margin: 0px 20px;
+	padding: 0 20px 0 0;
+    color: #C0392B;
+	display: inline-block;
+    background-color: #f2dede;
+	background-image: none;
+	border: 1px solid #C0392B;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-moz-user-select: none;
+	-ms-touch-action: manipulation;
+	-ms-user-select: none;
+	-webkit-border-radius: 4px;
+	-webkit-user-select: none;
+}
+#errormsg ul{
+	margin:10px 0;	
+}
+a{
+	text-decoration: none;
+	color: #333;
+}
+a:hover{
+	text-decoration:none;
+}
+a.button{
+	text-decoration:none;
+}
+table {
+	border-collapse: collapse;
+	margin: 0 20px;
+}
+th, td {
+	padding: 5px 15px;
+	border: 1px solid #999;
+}
+th {
+	background: #EEE;
+}

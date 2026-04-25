@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>小テストシステム</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body>
+    <h1>小テストシステム</h1>
+    <h2>「[[${examName}]]」試験お疲れ様でした。[[${name}]]さんの採点結果です。</h2>
+    <div id="contents">
+        <table>
+            <tr>
+                <th>得点</th>
+                <td><strong th:text="|${totalScore}点|">0点</strong>／[[${perfectScore}]]点</td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th>問題番号</th>
+                <th>問題文</th>
+                <th>あなたの答え</th>
+                <th>正解</th>
+                <th>得点</th>
+                <th>配点</th>
+            </tr>
+            <tr th:each="answer : ${answerData}">
+                <td th:text="${answer.questionId}">1</td>
+                <td><img th:src="|https://questiondata.blob.core.windows.net/questiondata/${answer.questionData}|" width="450" /></td>
+                <td>
+                    <span th:text="${answer.answer}" 
+                          th:style="${answer.score == 0} ? 'color:red;' : ''">解答</span>
+                </td>
+                <td th:text="${answer.collectAnswer}">正解</td>
+                <td th:text="|${answer.score}点|">0点</td>
+                <td th:text="|${answer.allocate}点|">0点</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

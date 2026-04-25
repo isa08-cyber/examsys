@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>小テストシステム</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body>
+    <h1>小テストシステム</h1>
+    <h2 th:text="${examName}">試験名</h2>
+    <div id="contents">
+        <form th:action="@{/result}" name="answerform" method="post">
+            <table>
+                <tr>
+                    <th>氏名を入力してください。</th>
+                    <td><input type="text" name="name" id="userName" required></td>
+                    <td>例．01アベや01阿部（半角数字スペース無し）</td>
+                </tr>
+            </table>
+
+            <div th:each="question, stat : ${questionData}" class="controlbox">
+                <h3 th:text="|第 ${stat.count} 問|">第 1 問</h3>
+                <img th:src="|https://questiondata.blob.core.windows.net/questiondata/${question}|" width="800" />
+                
+                <div class="controlbox" style="background-color:#EEEEEE; padding: 10px;">
+                    <th:block th:each="choice : ${#strings.arraySplit('ア,イ,ウ,エ', ',')}">
+                        <input type="radio" 
+                               th:name="${stat.count}" 
+                               th:value="${choice}" 
+                               style="margin: 10px 10px 10px 20px;" required>[[${choice}]]
+                    </th:block>
+                </div>
+                <hr>
+            </div>
+
+            <div class="controlbox">
+                <input type="hidden" name="examId" th:value="${examId}">
+                <button type="button" class="button-red" onclick="check();">提出</button>
+            </div>
+        </form>
+    </div>
+
+    <script th:inline="javascript">
+    function check() {
+        const name = document.getElementById('userName').value;
+        if (name === "") {
+            alert("氏名が未入力です。");
+            return false;
+        }
+        if (confirm('送信してよろしいですか？')) {
+            document.answerform.submit();
+        }
+    }
+    </script>
+</body>
+</html>

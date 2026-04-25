@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>小テストシステム</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body>
+    <h1>小テストシステム</h1>
+    <h2>「[[${examName}]]」採点結果</h2>
+    <div id="contents">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">通番</th>
+                    <th rowspan="2">解答番号</th>
+                    <th rowspan="2">提出時間</th>
+                    <th rowspan="2">氏名</th>
+                    <th rowspan="2">得点</th>
+                    <th th:each="ans, stat : ${collectAnswerList}" th:text="${stat.count}">1</th>
+                </tr>
+                <tr>
+                    <th th:each="ans : ${collectAnswerList}" th:text="${ans}">正解</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item, itemStat : ${list}">
+                    <td th:text="${itemStat.count}">1</td>
+                    <td th:text="${item.answerId}">ID</td>
+                    <td th:text="${#temporals.format(item.date, 'yyyy/MM/dd HH:mm:ss')}">時間</td>
+                    <td th:text="${item.name}">氏名</td>
+                    <td th:text="${item.totalScore}">点数</td>
+                    <td th:each="detail : ${item.details}" 
+                        th:text="${detail.answer}"
+                        th:style="${#lists.toList(collectAnswerList)[detail.questionId - 1] == detail.answer} ? 'background-color:#ffc0cb;' : ''">
+                        回答
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4">平均点</th>
+                    <td th:text="${totalAve}">0.0</td>
+                    <td th:each="qAve : ${totalAvePerQuestion}" th:text="${qAve}">0.0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
