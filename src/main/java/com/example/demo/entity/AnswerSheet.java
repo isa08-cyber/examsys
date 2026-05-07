@@ -10,6 +10,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -34,5 +35,6 @@ public class AnswerSheet {
     private int totalScore;
 
     @OneToMany(mappedBy = "answerSheet", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+@OrderBy("questionId ASC")
     private List<AnswerDetail> details = new ArrayList<>();
 }
