@@ -35,6 +35,6 @@ public class AnswerSheet {
     private int totalScore;
 
     @OneToMany(mappedBy = "answerSheet", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-@OrderBy("questionId ASC")
+    @OrderBy("questionId ASC")
     private List<AnswerDetail> details = new ArrayList<>();
 }
